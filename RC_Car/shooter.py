@@ -1,4 +1,4 @@
-import  RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 from time import sleep
 GPIO.setmode(GPIO.BCM)
 
@@ -12,7 +12,7 @@ while True:
     GPIO.output(pin,GPIO.HIGH)
     delays -= 1
     print(1)
+    inp = input("to stop shooting press enter")
     GPIO.output(pin,GPIO.LOW)
-    sleep(3)
 print(0)
 GPIO.cleanup()
