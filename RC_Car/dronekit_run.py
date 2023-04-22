@@ -14,7 +14,7 @@ from pymavlink import mavutil
 def connectMyCopter():
 
 	# Connect to the Vehicle (in this case serial port)
-	vehicle = connect('/dev/serial0', baud=57600,  wait_ready=False)
+	vehicle = connect('/dev/ttyAMA0', baud=57600,  wait_ready=True)
 	return vehicle
 
 
@@ -137,18 +137,6 @@ def test_thread():
 	vehicle_thread = threading.Thread(target=keep_vehicle_running)
 	vehicle_thread.start()
 	pin_thread.join()
-
-def test2():
-	import RPi.GPIO as GPIO
-	GPIO.setmode(GPIO.BOARD)
-	pin = 11
-	GPIO.setup(pin,GPIO.IN)
-	while True:
-		vehicle.channels.overrides['3']=1500
-		value = GPIO.input(pin)
-		print(value)
-		if value != 1:
-			pass
 		
 
 def gps_test():
